@@ -12,6 +12,8 @@ function ReferenceComponent( ) {
 
 ReferenceComponent.prototype.init = function( windowObject ) {
     this.windowObject = windowObject;
+    
+    windowObject.dialog( "option", "position", [620, 260] );
 };
 
 ReferenceComponent.prototype.update = function( newData, applet ) {

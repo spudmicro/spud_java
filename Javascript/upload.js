@@ -22,11 +22,12 @@ UploadComponent.prototype.init = function( windowObject ) {
     this.windowObject = windowObject;
     
     windowObject.css( "overflow", "hidden" );
-    $('#uploadText').css( "width", "100%" );
-    $('#uploadText').css( "height", "100%" );
+    $('#uploadText').css( "width", "99%" );
+    $('#uploadText').css( "height", "99%" );
     
     // resizes the textbox
     windowObject.dialog("option", "height", "240");
+    windowObject.dialog("option", "position", [100,100]);
 };
 
 UploadComponent.prototype.update = function( newData, applet ) {

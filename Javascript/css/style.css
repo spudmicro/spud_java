@@ -65,6 +65,11 @@
 	filter:alpha(opacity=60);
 }
 
+#uploadText {
+    border:1px solid #666;
+    resize: none;
+}
+
 .registerInput {
    width: 30px;
 }
