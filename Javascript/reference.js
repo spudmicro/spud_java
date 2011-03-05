@@ -5,7 +5,7 @@ function ReferenceComponent( ) {
         minWidth: 100,
         minHeight: 100,
         width: 350,
-        title: "Instructions"
+        title: "Instructions",
     };
     this.buttonName = "Instruction Reference";
 }
@@ -22,7 +22,7 @@ ReferenceComponent.prototype.update = function( newData, applet ) {
 
 ReferenceComponent.prototype.updateProcessor = function( processorData, applet ) {
     table = '<table id="instructionTable">';
-    table += '<tr><th>Instruction</th><th>Bytes</th><th>Meaning</th></tr>';
+    table += '<tr><th style="padding-right:30px">#</th><th>Bytes</th><th>Meaning</th></tr>';
     for ( var i in processorData.instructions ) {
         var instruction = processorData.instructions[i];
     
