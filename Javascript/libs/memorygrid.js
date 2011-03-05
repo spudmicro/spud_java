@@ -211,11 +211,15 @@
 			registerConsole += '</div>';
 		}
 		
+		var padding = 40;
+		//$(container).find('.ui-memorygrid-container').width( $(container).find('.ui-memorygrid').width( ) );
+		$(container).width( $(container).find('.ui-memorygrid').width( ) + padding );
+		
 		$(container).append( registerConsole );
 		
 		$(container).append('<div id="instructionBubble"></div>');
 		
-		$(container).find('#instructionBubble').css('position', 'absolute').hide( );
+		$(container).find('#instructionBubble').hide( );
 		
 		$(container).append('<div id="ipLine"></div>');
 		
@@ -242,10 +246,10 @@
 					bubble.html( instruction );
 					var topOffset  = 30;//bubble.height();
 					var leftOffset = 0;//bubble.width()/2;
-					var offset = obj.offset( );
+					var offset = { left: obj.offset( ).left, top: obj.offset( ).top };
 					
-					offset.left -= leftOffset;
-					offset.top  -= topOffset;
+					offset.left -= leftOffset + $(container).offset( ).left;
+					offset.top  -= topOffset  + $(container).offset( ).top;
 					
 					bubble.css( 'top', offset.top );
 					bubble.css( 'left', offset.left );
@@ -253,6 +257,18 @@
 				}
 			}
 		).mouseout(
+			function( event ) {
+				$(container).find('#instructionBubble').hide( );
+			}
+		);
+		
+		$(container).find('#instructionBubble').mouseout(
+			function( event ) {
+				$(container).find('#instructionBubble').hide( );
+			}
+		);
+		
+		$(container).mouseout(
 			function( event ) {
 				$(container).find('#instructionBubble').hide( );
 			}

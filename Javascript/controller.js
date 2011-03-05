@@ -6,12 +6,12 @@ $( document ).ready( init );
 function init( ) {
     registerComponent( new HardwareComponent( ) );
     registerWindowedComponent( new UploadComponent( ) );
-    registerWindowedComponent( new GridViewComponent( ) );
+    registerOverlayComponent( new InternalStateComponent( ) );
     registerWindowedComponent( new SpudComponent( ) );
     registerWindowedComponent( new ReferenceComponent( ) );
 	
-	applet = new Applet( update, updateProcessor );
-	applet.init("#applet");
+    applet = new Applet( update, updateProcessor );
+    applet.init("#applet");
     applet.loadProgram( [] );
 }
 
@@ -31,6 +31,27 @@ function updateProcessor( ) {
 
 function registerComponent( componentObject ) {
     componentObject.init( );
+    components[componentObject.name] = componentObject;
+}
+
+function registerOverlayComponent( componentObject ) {
+    var overlayName = componentObject.name + "Overlay";
+    var buttonName = componentObject.name + "Button";
+    var buttonText = componentObject.buttonName;
+    var html = componentObject.html;
+
+
+    $(document.body).append('<div id="'+overlayName+'">'+html+'</div>');
+
+    var overlayObject = $( "#"+overlayName );
+
+    $( "#buttons" ).append( '<button id="'+buttonName+'">'+buttonText+'</button>' );
+    $( "#"+buttonName ).button( );
+    $( "#"+buttonName ).click( function( ) {
+        overlayObject.toggle( );
+    } );
+
+    componentObject.init( overlayObject );
     components[componentObject.name] = componentObject;
 }
 

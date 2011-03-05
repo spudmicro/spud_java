@@ -4,8 +4,6 @@
 }
 
 .ui-memorygrid-container {
-	width:550px;
-	height:200px;
 	overflow:auto;
 	background-color:#fcfcfc;
 	padding:4px;
@@ -13,6 +11,8 @@
 }
 
 #instructionBubble {
+    position:absolute;
+    display:block;
 	background-color:white;
 	border:1px solid #eee;
 	padding:5px;
@@ -52,7 +52,6 @@
 
 .ui-memorygrid-registerconsole {
 	margin:10px;
-	width:550px;
 }
 
 .ui-memorygrid-registerinput {
