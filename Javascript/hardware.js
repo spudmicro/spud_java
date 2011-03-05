@@ -135,6 +135,8 @@ HardwareComponent.prototype.init = function( windowObject ) {
 };
 
 HardwareComponent.prototype.update = function( newData, applet ) {
+    //console.log( newData );
+    
     this.setOutput( newData.output );
     this.setPipelineStep( newData.pipelineStep );
     
@@ -144,6 +146,21 @@ HardwareComponent.prototype.update = function( newData, applet ) {
     }
     
     this.numBellRings = newData.numBellRings;
+    
+    // do a sort of animation on halt
+    if ( newData.isHalted ) {
+        changeImage( "#fetchLED", "on" );
+        changeImage( "#incLED", "on" );
+        changeImage( "#exLED", "on" );
+        
+        $("#fetchLED").fadeOut( 1000 );
+        $("#incLED").fadeOut( 1000 );
+        $("#exLED").fadeOut( 1000 );
+    } else {
+        $("#fetchLED").show( );
+        $("#incLED").show( );
+        $("#exLED").show( );
+    }
 };
 
 HardwareComponent.prototype.updateProcessor = function( processorData, applet ) {
