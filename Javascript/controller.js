@@ -3,6 +3,10 @@ var components = {};
 
 $( document ).ready( init );
 
+var ctrlDown = false;
+var altDown  = false;
+var delDown  = false;
+
 function init( ) {
     registerComponent( new HardwareComponent( ) );
     registerWindowedComponent( new UploadComponent( ) );
@@ -13,6 +17,47 @@ function init( ) {
     applet = new Applet( update, updateProcessor );
     applet.init("#applet");
     applet.loadProgram( [] );
+    
+    $( document ).keydown( 
+        function( evt ) {
+            if ( evt.which == 17 ) {
+                ctrlDown = true;
+            } else if ( evt.which == 18 ) {
+                altDown = true;
+            } else if ( evt.which == 8 || evt.which == 46 ) {
+                delDown = true;
+            }
+            
+            if ( ctrlDown && altDown && delDown ) {
+                $('body').css( 'background-color', '#00a' );
+                $('body').find( 'div' ).hide( );
+                $('body').append( '<div style="width:60%;color:white;font-size:20px;font-family:monospace;font-weight:bold;margin:auto;">'
+                + '<pre>A fatal exception has occurred. The current application will be terminated.\n\n'
+                + ' * Press any key to terminate the current application\n'
+                + ' * Press CTRL + ALT + DEL again to restart your computer. You will\n   lose any unsaved information in all applications.\n'
+                + '\n</pre><br/>'
+                + '<center>Press any key to continue_</center>'
+                + '</div>');
+                ctrlDown = false;
+                altDown = false;
+                delDown = false;
+                setTimeout( '$( document ).keypress( function() { location.reload(); } );', 600 );
+            }
+        }
+    );
+    
+    
+    $( document ).keyup(
+        function( evt ) {
+            if ( evt.which == 17 ) {
+                ctrlDown = false;
+            } else if ( evt.which == 18 ) {
+                altDown = false;
+            } else if ( evt.which == 8 || evt.which == 46 ) {
+                delDown = false;
+            }
+        }
+    );
     
     $( document ).keypress(
         function( evt ) {
