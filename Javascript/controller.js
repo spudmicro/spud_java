@@ -37,6 +37,7 @@ function init( ) {
     applet.init("#applet");
     applet.loadProgram( [] );
     
+    // grab data from url
     var url = $.getUrlVar('url');
     if ( url ) {
         $.get(

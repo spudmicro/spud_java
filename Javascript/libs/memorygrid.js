@@ -220,9 +220,9 @@
 		
 		$(container).append( registerConsole );
 		
-		$(container).append('<div id="instructionBubble"></div>');
+		$(container).parent().append('<div id="instructionBubble"></div>');
 		
-		$(container).find('#instructionBubble').hide( );
+		$('#instructionBubble').hide( );
 		
 		$(container).append('<div id="ipLine"></div>');
 		
@@ -245,14 +245,14 @@
 					
 					var instruction = instructions[val];
 					
-					var bubble = $(container).find('#instructionBubble');
+					var bubble = $('#instructionBubble');
 					bubble.html( instruction );
-					var topOffset  = 30;//bubble.height();
-					var leftOffset = 0;//bubble.width()/2;
+					var topOffset  = 2*bubble.height();
+					var leftOffset = -10+bubble.width()/2;
 					var offset = { left: obj.offset( ).left, top: obj.offset( ).top };
 					
-					offset.left -= leftOffset + $(container).offset( ).left;
-					offset.top  -= topOffset  + $(container).offset( ).top;
+					offset.left -= leftOffset;
+					offset.top  -= topOffset;
 					
 					bubble.css( 'top', offset.top );
 					bubble.css( 'left', offset.left );
@@ -263,19 +263,19 @@
 			}
 		).mouseout(
 			function( event ) {
-				$(container).find('#instructionBubble').hide( );
+				$('#instructionBubble').hide( );
 			}
 		);
 		
 		$(container).find('#instructionBubble').mouseout(
 			function( event ) {
-				$(container).find('#instructionBubble').hide( );
+				$('#instructionBubble').hide( );
 			}
 		);
 		
 		$(container).mouseout(
 			function( event ) {
-				$(container).find('#instructionBubble').hide( );
+				$('#instructionBubble').hide( );
 			}
 		);
 		
