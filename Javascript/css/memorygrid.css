@@ -1,0 +1,80 @@
+.ui-memorygrid {
+	padding:0px;
+	border-collapse:collapse;
+}
+
+.ui-memorygrid-container {
+	width:550px;
+	height:200px;
+	overflow:auto;
+	background-color:#fcfcfc;
+	padding:4px;
+	border:1px solid #eee;
+}
+
+#instructionBubble {
+	background-color:white;
+	border:1px solid #eee;
+	padding:5px;
+	border-radius:6px;
+	font-family:sans-serif;
+	font-size:10pt;
+}
+.ui-memorygrid-cell {
+	border:1px solid #ccc;
+}
+
+.ui-memorygrid-rowheader {
+	font-size:8pt;
+	font-family:sans-serif;
+	color:#888;
+	padding-right:3px;
+	text-align:right;
+}
+
+
+.ui-memorygrid-activeIP input {
+	color:black;
+	text-decoration:underline;
+}
+
+.ui-memorygrid-activeIP {
+	background-color:#fdd;
+}
+
+.ui-memorygrid-input {
+	width:30px;
+	border:0px;
+	background:transparent;
+	text-align:center;
+}
+
+
+.ui-memorygrid-registerconsole {
+	margin:10px;
+	width:550px;
+}
+
+.ui-memorygrid-registerinput {
+	width:30px;
+	margin-left:5px;
+	border:1px solid #999;
+	text-align:center;
+}
+
+.ui-memorygrid-registerlabel {
+	display:inline-block;
+	width:30px;
+}
+
+.ui-memorygrid-register {
+	display:inline-block;
+	text-align:right;
+	font-family:sans-serif;
+	font-size:10pt;
+}
+
+.ui-memorygrid-animatedcell {
+	background:transparent;
+	width:30px;
+}

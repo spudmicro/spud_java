@@ -1,0 +1,79 @@
+.graphic, .button, .switch {
+	background-repeat: no-repeat; position: absolute;
+}
+
+.text {
+	position: absolute;
+}
+
+#background {
+	width: 620px; height: 600px;
+	top: 0px; left: 0px;	
+}
+
+#board { 
+	width: 620px; height: 600px;
+	top: 0px; left: 0px; 
+}
+
+#bell {
+	width: 182px; height: 177px;
+	top: 197px; left: 21px;
+}
+
+#powerSwitch {
+	width: 68px; height: 134px;
+	top: 56px; left: 54px;
+}
+
+#resetButton { 
+	width: 139px; height: 65px; 
+	top: 308px; left: 278px;
+}
+
+#stepButton { 
+	width: 139px; height: 65px;  
+	top: 250px; left: 417px; 
+}
+
+#runButton { 
+	width: 139px; height: 65px; 
+	top: 250px; left: 278px; 
+}
+
+#chipLabel {
+	top: 152px; left: 325px;
+	width: 150px;
+	font-family: 'LastWordsThin';
+ 	font-size: 10pt;
+ 	color: #BFBFBF;
+   text-align: center;
+	opacity: 0.7;
+	-moz-opacity: 0.7;
+	filter:alpha(opacity=70);
+}
+
+#outputLCD {
+	top: 425px; left: 55px;
+	width: 510px; height: 93px;
+	font-family: 'LCDDotRegular'; 
+   font-size: 20pt;
+	color: #000;
+	overflow: auto;
+	opacity: 0.6;
+	-moz-opacity: 0.6;
+	filter:alpha(opacity=60);
+}
+
+.registerInput {
+   width: 30px;
+}
+
+.memoryInput {
+   width: 30px;
+}
+
+#buttons {
+   position: absolute;
+   top: 600px;
+}

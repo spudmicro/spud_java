@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <title>Test</title>
+    <meta http-equiv="Pragma" content="no-cache">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script>
+        var applet;
+        var state;
+        var delay = 50;
+        var running = false;
+        var timeout;
+        
+        $( document ).ready( function( ) {
+            applet = $( '#applet' )[0];
+            update( );
+        } );
+    
+        function update( s ) {
+            if ( s == undefined ) {
+                s = applet.getState( );
+            }
+            
+            state = JSON.parse(s)
+            
+            $( "#json" ).html( "<pre>"+s+"</pre>" );
+        }
+    
+        function step( ) {
+            update(applet.step( ));
+        }
+    
+        function setMemory( values ) {
+            for ( var i in values ) {
+                applet.setMemory( i, values[i] );
+            }
+            update( );
+        }
+    
+        function clearState( ) {
+            update( applet.clearState( ) );
+        }
+        
+        function loadProgram( values ) {
+            clearState( );
+            setMemory( values ); 
+        }
+        
+        function run( ) {
+            if (!running) {
+                running = true;
+                timeout = setTimeout(runStep, delay);;
+            } else {
+                clearTimeout(timeout);
+                timeout = undefined;
+                running = false;
+            }
+        }
+        
+        function runStep( ) {
+            step( );
+            if ( !state.isHalted && running ) {
+                timeout = setTimeout(runStep, delay);
+            }
+        }
+    </script>
+  </head>
+  <body>
+    <object type="application/x-java-applet" width="200" height="200" id="applet">
+      <param name="code" value="emulator/AppletRunner.class">
+      <param name="cache_option" value="no">
+      <param name="cache_archive" value="">
+    </object>
+    <div id="json">
+    </div>
+    <div>
+      <a href="javascript:loadProgram(JSON.parse(prompt('Mmmh?','[]')));">load program</a><br>
+      <a href="javascript:run()">run</a><br>
+      <a href="javascript:step()">step</a><br>
+    </div>
+  </body>
+</html>
