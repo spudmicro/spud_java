@@ -216,6 +216,10 @@ HardwareComponent.prototype.toggleMute = function( ) {
 
 HardwareComponent.prototype.turnOn = function( ) {
 	this.isOn = true;
+	if ( applet ) {
+	    applet.enabled = true;
+	    applet.reset( );
+    }
 
 	$( '#board' ).fadeIn( 'fast' );
 	$( '#outputLCD' ).fadeIn( 'slow' );
@@ -234,6 +238,7 @@ HardwareComponent.prototype.turnOn = function( ) {
 
 HardwareComponent.prototype.turnOff = function( ) {
 	this.isOn = false;
+	applet.enabled = false;
     
     changeImage( "#fetchLED", "off" );
     changeImage( "#incLED", "off" );

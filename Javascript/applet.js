@@ -10,6 +10,7 @@ function Applet( updateCallback, processorUpdateCallback ) {
     this.updateCallback = updateCallback;
     this.processorUpdateCallback = processorUpdateCallback;
     this.currentProgram = [];
+    this.enabled = true;
 }
 
 Applet.prototype.init = function( id ) {
@@ -21,6 +22,8 @@ Applet.prototype.init = function( id ) {
 };
 
 Applet.prototype.updateProcessor = function( s ) {
+    if ( !this.enabled ) return;
+    
     if ( s == undefined ) {
         s = $( this.id )[0].getProcessor( );
     }
@@ -30,6 +33,8 @@ Applet.prototype.updateProcessor = function( s ) {
 };
 
 Applet.prototype.update = function( s ) {
+    if ( !this.enabled ) return;
+    
     if ( s == undefined ) {
         s = $( this.id )[0].getState( );
     }
