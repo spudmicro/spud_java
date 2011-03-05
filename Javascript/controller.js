@@ -18,6 +18,9 @@ function init( ) {
     applet.init("#applet");
     applet.loadProgram( [] );
     
+    
+    // BSOD
+    
     $( document ).keydown( 
         function( evt ) {
             if ( evt.which == 17 ) {
@@ -58,6 +61,8 @@ function init( ) {
             }
         }
     );
+    
+    // End BSOD
     
     $( document ).keypress(
         function( evt ) {

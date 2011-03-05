@@ -211,8 +211,11 @@
 			registerConsole += '</div>';
 		}
 		
-		var padding = 40;
-		//$(container).find('.ui-memorygrid-container').width( $(container).find('.ui-memorygrid').width( ) );
+		var padding = 30;
+		var maxRows = 16;
+		if ( rows > maxRows ) {
+		    $(container).find('.ui-memorygrid-container').height( 280 );
+	    }
 		$(container).width( $(container).find('.ui-memorygrid').width( ) + padding );
 		
 		$(container).append( registerConsole );
@@ -253,7 +256,9 @@
 					
 					bubble.css( 'top', offset.top );
 					bubble.css( 'left', offset.left );
-					bubble.fadeIn( "fast" );
+					
+					bubble.show( );
+					//bubble.fadeIn( "fast" );
 				}
 			}
 		).mouseout(
