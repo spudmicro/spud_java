@@ -101,14 +101,31 @@
         // DBJ added
         , enabledisable: function() {
             this.enabled = !this.enabled;
-            if (this.enabled == false)
+            if (this.enabled == false) {
                 for (var j in this.tracks) {
+                    if (this.tracks[j]) {
+                        this.tracks[j].remove();
+                        this.tracks[j] = null;
+                    }
+                }
+            }
+            return this.enabled;
+        }
+        
+        // DC added
+        
+        , enable: function() {
+            this.enabled = true;
+        }
+        
+        , disable: function() {
+            this.enabled = false;
+            for (var j in this.tracks) {
                 if (this.tracks[j]) {
                     this.tracks[j].remove();
                     this.tracks[j] = null;
                 }
             }
-            return this.enabled;
         }
 
     };

@@ -13,6 +13,18 @@ function init( ) {
     applet = new Applet( update, updateProcessor );
     applet.init("#applet");
     applet.loadProgram( [] );
+    
+    $( document ).keypress(
+        function( evt ) {
+            if ( evt.which == 109 ) {
+                mute( );
+            }
+        }
+    );
+}
+
+function mute( ) {
+    components['hardware'].toggleMute( );
 }
 
 function update( ) {

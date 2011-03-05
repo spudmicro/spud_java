@@ -21,9 +21,7 @@ var assets = {
 	"hum"              : this.assetDir + "hum.mp3"
 };
 
-function changeImage( id, imgSuffix ) {
-    this.name = "Hardware";
-    
+function changeImage( id, imgSuffix ) {    
 	var buttonObj = $(id);
 	var id = buttonObj.attr( 'id' );
 	
@@ -36,6 +34,9 @@ function changeImage( id, imgSuffix ) {
 	
 	buttonObj.css( 'background-image', 'url("' + imgUrl + '")' );
 }
+
+
+// Begin class
 
 function HardwareComponent( ) {
     this.html = '<div id="background" class="graphic" height=1000>';
@@ -60,7 +61,9 @@ function HardwareComponent( ) {
     	"stepButton",
     ];
     
-    this.isMute = true;
+    this.name = "hardware";
+    
+    this.isMute = false;
 }
 
 HardwareComponent.prototype.setCSS = function( identifier, css ) {
@@ -189,6 +192,9 @@ HardwareComponent.prototype.liftButtons = function( ) {
 HardwareComponent.prototype.toggleMute = function( ) {
 	this.isMute = !this.isMute;
 	$.dbj_sound.enabledisable( );
+	if ( $.dbj_sound.enabled ) {
+	    $.dbj_sound.play( assets['hum'] );
+	}
 };
 
 HardwareComponent.prototype.turnOn = function( ) {
@@ -200,8 +206,12 @@ HardwareComponent.prototype.turnOn = function( ) {
 
 	if ( !this.isMute ) {
 		$.sound.play( assets['power_up'] );
+		$.dbj_sound.enable( );
+	} else {
+	    $.dbj_sound.disable( );
 	}
 
+    
 	$.dbj_sound.play( assets['hum'] );
 };
 
