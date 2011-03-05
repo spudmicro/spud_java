@@ -164,7 +164,9 @@ HardwareComponent.prototype.update = function( newData, applet ) {
 };
 
 HardwareComponent.prototype.updateProcessor = function( processorData, applet ) {
-    $("#chipLabel").html(processorData.name);
+    if ( processorData ) {
+        $("#chipLabel").html(processorData.name);
+    }
 };
 
 HardwareComponent.prototype.boardInit = function( ) {
