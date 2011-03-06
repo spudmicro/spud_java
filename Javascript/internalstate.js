@@ -20,16 +20,18 @@ InternalStateComponent.prototype.update = function( newData, applet, slow ) {
 };
 
 InternalStateComponent.prototype.animateUpdate = function( newData ) {
+    var moveSpeed = "slow";
+    var flashSpeed = "fast";
     if (newData.pipelineStep == 0) {
         // execute
-        this.uiObject.memorygrid( "animateHighlight", "IS", "#00FF00", 200 );
+        this.uiObject.memorygrid( "animateHighlight", "IS", "#8f8", flashSpeed );
     } else if (newData.pipelineStep == 1) {
         // fetch
         ip = parseInt(this.uiObject.memorygrid( "getRegister", "IP"));
-        this.uiObject.memorygrid( "animateCopy", ip, "IS", 200 );
+        this.uiObject.memorygrid( "animateCopy", ip, "IS", moveSpeed );
     } else if (newData.pipelineStep == 2) {
         // increment
-        this.uiObject.memorygrid( "animateHighlight", "IP", "#FFFF00", 200 );
+        this.uiObject.memorygrid( "animateHighlight", "IP", "#ff8", flashSpeed );
     }
 };
 

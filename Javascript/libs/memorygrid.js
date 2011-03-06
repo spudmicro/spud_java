@@ -87,12 +87,13 @@
 			startOffset.left = Math.max( containerOffset.left, startOffset.left );
 			startOffset.left = Math.min( containerOffset.left + $(this).width(), startOffset.left );
 			
+			
 			moveObj.offset( startOffset );
 			
 			var toOffset = toObj.offset();
 			moveObj.animate( {
-				left:toOffset.left,
-				top:toOffset.top,
+				left:toOffset.left - moveObj.parent( ).offset( ).left,
+				top:toOffset.top - moveObj.parent( ).offset( ).top,
 			},
 			duration,
 			function() {
