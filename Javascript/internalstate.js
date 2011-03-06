@@ -8,10 +8,28 @@ InternalStateComponent.prototype.init = function( uiObject ) {
     this.uiObject = uiObject;
 };
 
-InternalStateComponent.prototype.update = function( newData, applet ) {
+InternalStateComponent.prototype.update = function( newData, applet, slow ) {
+    if ( slow ) {
+        this.animateUpdate( newData );
+    }
+    
     this.uiObject.memorygrid( 'setMemory', newData.memory );
     for ( var i in newData.registers ) {
         this.uiObject.memorygrid( 'setRegister', i, newData.registers[i] );
+    }
+};
+
+InternalStateComponent.prototype.animateUpdate = function( newData ) {
+    if (newData.pipelineStep == 0) {
+        // execute
+        this.uiObject.memorygrid( "animateHighlight", "IS", "#00FF00", 200 );
+    } else if (newData.pipelineStep == 1) {
+        // fetch
+        ip = parseInt(this.uiObject.memorygrid( "getRegister", "IP"));
+        this.uiObject.memorygrid( "animateCopy", ip, "IS", 200 );
+    } else if (newData.pipelineStep == 2) {
+        // increment
+        this.uiObject.memorygrid( "animateHighlight", "IP", "#FFFF00", 200 );
     }
 };
 
@@ -32,7 +50,10 @@ InternalStateComponent.prototype.updateProcessor = function( processorData, appl
         instructions.push( processorData.instructions[i][2] );
     }
     this.uiObject.attr( 'id', 'memoryOverlay' );
-    this.uiObject.html("");
+
+    // clear old memorygrid
+    this.uiObject.html( "" );
+
     this.uiObject.memorygrid( {
 		rows: rows,
 		cols: cols,

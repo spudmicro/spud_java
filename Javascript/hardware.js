@@ -279,7 +279,7 @@ HardwareComponent.prototype.runButton = function( ) {
 
 HardwareComponent.prototype.stepButton = function( ) {
     if ( this.isOn ) {
-        applet.step( );
+        applet.step( true ); // slow step
     }
 };
 

@@ -71,7 +71,6 @@
 		animateCopy: function( cellIdFrom, cellIdTo, duration ) {
 			var fromObj = cellIdToObj.call( this, cellIdFrom );
 			var toObj   = cellIdToObj.call( this, cellIdTo );
-			
 			var moveObj = fromObj.clone().appendTo(this);
 			moveObj.unbind( );
 			moveObj.attr( 'id', 'animationcell' );

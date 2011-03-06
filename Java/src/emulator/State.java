@@ -138,6 +138,7 @@ public class State {
     
     public void print( int value ) {
         output += Integer.toString( value );
+        output += " ";
         //System.out.println(Integer.toString( value ));
     }
      

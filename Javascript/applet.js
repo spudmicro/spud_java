@@ -32,7 +32,7 @@ Applet.prototype.updateProcessor = function( s ) {
     this.processorUpdateCallback( );
 };
 
-Applet.prototype.update = function( s ) {
+Applet.prototype.update = function( s, slow ) {
     if ( !this.enabled ) return;
     
     if ( s == undefined ) {
@@ -40,12 +40,12 @@ Applet.prototype.update = function( s ) {
     }
 
     this.state = JSON.parse( s );
-    this.updateCallback( );
+    this.updateCallback( slow );
 };
 
-Applet.prototype.step = function( ) {
+Applet.prototype.step = function( slow ) {
     if (!this.state.isHalted) {
-        this.update( $( this.id )[0].step( ) );
+        this.update( $( this.id )[0].step( ), slow );
     }
 };
 
