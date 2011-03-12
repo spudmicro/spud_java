@@ -1,7 +1,7 @@
 var applet = null;
 var components = {};
 
-$( document ).ready( init );
+//$( document ).ready( init );
 
 // ????
 var magic1 = false;
@@ -26,7 +26,11 @@ $.extend({
   }
 });
 
-function init( ) {
+var spudContainer = $(document.body);
+
+function init( spudContainer_ ) {
+	spudContainer = spudContainer_;
+	
     registerComponent( new HardwareComponent( ) );
     registerWindowedComponent( new UploadComponent( ) );
     registerOverlayComponent( new InternalStateComponent( ) );
@@ -101,7 +105,7 @@ function registerOverlayComponent( componentObject ) {
     var html = componentObject.html;
 
 
-    $(document.body).append('<div id="'+overlayName+'">'+html+'</div>');
+    spudContainer.append('<div id="'+overlayName+'">'+html+'</div>');
 
     var overlayObject = $( "#"+overlayName );
 
@@ -130,7 +134,7 @@ function registerWindowedComponent( componentObject, dialogOptionsOverride ) {
         dialogOptions[i] = dialogOptionsOverride[i];
     }
     
-    $(document.body).append('<div id="'+windowName+'">'+html+'</div>');
+    spudContainer.append('<div id="'+windowName+'">'+html+'</div>');
     
     var windowObject = $( "#"+windowName );
     

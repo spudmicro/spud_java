@@ -6,6 +6,10 @@
 	position: absolute;
 }
 
+#spud_container {
+	position: relative;
+}
+
 #background {
 	width: 620px; height: 600px;
 	top: 0px; left: 0px;	
@@ -80,7 +84,8 @@
 
 #buttons {
    position: absolute;
-   top: 600px;
+   top: 0px;
+   left: 20px;
    width:600px;
    text-align:center;
 }
@@ -93,4 +98,23 @@
    border:1px solid #444;
    border-radius:8px;
    padding:10px;
+}
+
+#uploadButton,
+#internalStateViewButton,
+#referenceButton {
+	background-color: #f0f0f0;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f0f0'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f0f0f0)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #ffffff,  #f0f0f0); /* for firefox 3.6+ */
+	
+	border: 1px solid #cccccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	
+	color: #000 !important;
+	font-family: arial, helvetica, verdana, sans-serif;
+	font-size: 12px;
+	padding: 2px 6px;
 }

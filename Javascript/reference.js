@@ -13,7 +13,10 @@ function ReferenceComponent( ) {
 ReferenceComponent.prototype.init = function( windowObject ) {
     this.windowObject = windowObject;
     
-    windowObject.dialog( "option", "position", [620, 260] );
+	var offset = spudContainer.offset( );
+	var x = offset.left + 620;
+	var y = offset.top + 260;
+    windowObject.dialog("option", "position", [x,y]);
 };
 
 ReferenceComponent.prototype.update = function( newData, applet ) {

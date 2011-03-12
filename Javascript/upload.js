@@ -34,9 +34,13 @@ UploadComponent.prototype.init = function( windowObject ) {
             }
         }
     );
+
     // resizes the textbox
+	var offset = spudContainer.offset( );
+	var x = offset.left + 100;
+	var y = offset.top + 100;
     windowObject.dialog("option", "height", "240");
-    windowObject.dialog("option", "position", [100,100]);
+    windowObject.dialog("option", "position", [x,y]);
 };
 
 UploadComponent.prototype.update = function( newData, applet ) {

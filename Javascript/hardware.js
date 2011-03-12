@@ -83,7 +83,7 @@ HardwareComponent.prototype.init = function( windowObject ) {
     {'position': 'absolute'} );
 
     this.setCSS( '#background', 
-    {'width': '620px', 'top': '0px', 'left': '0px', 'height': '600px'} );
+    {'width': '620px', 'top': '30px', 'left': '0px', 'height': '600px'} );
 
     this.setCSS( '#board', 
     {'width': '620px', 'top': '0px', 'left': '0px', 'height': '600px'} );
